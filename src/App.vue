@@ -13,6 +13,9 @@ export default {
       localStorage.setItem("todoList", JSON.stringify(this.todos));
       this.newTodo = "";
     },
+    deleteTodo: function (index) {
+      this.todos.splice(index, 1);
+    },
   },
   mounted() {
     if (Object.prototype.hasOwnProperty.call(localStorage, "todoList")) {
