@@ -1,5 +1,10 @@
 <script>
+import CreateForm from "./components/CreateForm.vue";
+
 export default {
+  components: {
+    CreateForm,
+  },
   data() {
     return {
       newTodo: "",
@@ -7,11 +12,13 @@ export default {
     };
   },
   methods: {
-    addTodo: function () {
+    addTodo: function (event) {
+      this.newTodo = event;
       if (this.newTodo === "") return;
       this.todos.push(this.newTodo);
       localStorage.setItem("todoList", JSON.stringify(this.todos));
       this.newTodo = "";
+      console.log(event);
     },
     deleteTodo: function (index) {
       this.todos.splice(index, 1);
@@ -31,9 +38,8 @@ export default {
 <template>
   <div>
     <h1>ToDo</h1>
-    <p>データ{{ $data }}</p>
-    <input v-model="newTodo" type="text" />
-    <button @click="addTodo">Add</button>
+    <p>Appのデータ{{ $data }}</p>
+    <CreateForm v-on:addTodo="addTodo"/>
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ index }}：{{ todo }}
