@@ -18,7 +18,7 @@ export default {
       this.todos.push(this.newTodo);
       localStorage.setItem("todoList", JSON.stringify(this.todos));
       this.newTodo = "";
-      console.log(event);
+      this.$refs.createForm.clearInput();
     },
     deleteTodo: function (index) {
       this.todos.splice(index, 1);
@@ -39,7 +39,7 @@ export default {
   <div>
     <h1>ToDo</h1>
     <p>Appのデータ{{ $data }}</p>
-    <CreateForm v-on:addTodo="addTodo"/>
+    <CreateForm ref="createForm" v-on:addTodo="addTodo" />
     <ul>
       <li v-for="(todo, index) in todos" v-bind:key="index">
         {{ index }}：{{ todo }}

@@ -2,27 +2,20 @@
 export default {
   data() {
     return {
-      newTodo: "",
+      input: "",
     };
   },
   methods: {
-    clear: function (){
-      console.log('clear')
-    },
-//     addTodo: function () {
-//       if (this.newTodo === "") return;
-//       this.todos.push(this.newTodo);
-//       localStorage.setItem("todoList", JSON.stringify(this.todos));
-//       this.newTodo = "";
-//     },
-  },
+    clearInput: function() {
+      this.input = "";
+    }
+  }
 };
 </script>
 
 <template>
   <div>
-    <p>CreateFormのデータ{{ $data }}</p>
-    <input v-model="newTodo" type="text" />
-    <button @click="$emit('addTodo', this.newTodo)">Add</button>
+    <input v-model="input" type="text" />
+    <button @click="$emit('addTodo', this.input)">Add</button>
   </div>
 </template>
