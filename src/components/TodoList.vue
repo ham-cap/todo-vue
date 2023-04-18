@@ -1,6 +1,8 @@
 <script>
 export default {
-  props: ["todos"]
+  props: {
+    todos: Array
+  }
 };
 </script>
 

@@ -10,7 +10,10 @@ export default {
       this.changedTodo = "";
     }
   },
-  props: ["selectedTodo", "selectedIndex"]
+  props: {
+    selectedTodo: String,
+    selectedIndex: Number
+  }
 };
 </script>
 
