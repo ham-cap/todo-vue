@@ -1,11 +1,13 @@
 <script>
 import CreateForm from "./components/CreateForm.vue";
 import EditForm from "./components/EditForm.vue";
+import TodoList from "./components/TodoList.vue";
 
 export default {
   components: {
     CreateForm,
     EditForm,
+    TodoList,
   },
   data() {
     return {
@@ -46,6 +48,7 @@ export default {
       this.editing = false;
       this.selectedTodo = "";
       this.selectedIndex = "";
+      this.updatedTodo = "";
     }
   },
   mounted() {
@@ -65,12 +68,6 @@ export default {
     <p>Appのデータ{{ $data }}</p>
     <CreateForm ref="createForm" v-on:addTodo="addTodo" v-if="this.editing === false" />
     <EditForm ref="editForm" v-on:updateTodo="updateTodo" v-bind:selectedTodo="selectedTodo" v-bind:selectedIndex="selectedIndex" v-else />
-    <ul>
-      <li v-for="(todo, index) in todos" v-bind:key="index">
-        {{ index }}：{{ todo }}
-        <button v-on:click="deleteTodo(index)">Delete</button>
-        <button v-on:click="editTodo(index)">Edit</button>
-      </li>
-    </ul>
+    <TodoList v-on:deleteTodo="deleteTodo" v-on:editTodo="editTodo" v-bind:todos="this.todos" />
   </div>
 </template>
