@@ -64,8 +64,7 @@ export default {
 
 <template>
   <div>
-    <h1>ToDo</h1>
-    <p>Appのデータ{{ $data }}</p>
+    <h1>ToDoApp</h1>
     <CreateForm ref="createForm" v-on:addTodo="addTodo" v-if="this.editing === false" />
     <EditForm ref="editForm" v-on:updateTodo="updateTodo" v-bind:selectedTodo="selectedTodo" v-bind:selectedIndex="selectedIndex" v-else />
     <TodoList v-on:deleteTodo="deleteTodo" v-on:editTodo="editTodo" v-bind:todos="this.todos" />

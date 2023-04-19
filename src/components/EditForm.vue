@@ -21,8 +21,5 @@ export default {
   <div>
     <input v-model="changedTodo" type="text" />
     <button @click="$emit('updateTodo', this.changedTodo, this.selectedIndex)">Update</button>
-    <p>selectedTodo: {{ selectedTodo }}</p>
-    <p>selectedIndex: {{ selectedIndex }}</p>
-    <p>EditFormのデータ: {{ $data }}</p>
   </div>
 </template>
