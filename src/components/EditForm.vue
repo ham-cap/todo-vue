@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      changedTodo: this.selectedTodo,
+      updatingTodo: this.selectedTodo,
     };
   },
   methods: {
@@ -19,7 +19,7 @@ export default {
 
 <template>
   <div>
-    <input v-model="changedTodo" type="text" />
-    <button @click="$emit('updateTodo', this.changedTodo, this.selectedIndex)">Update</button>
+    <input v-model="updatingTodo" type="text" />
+    <button @click="$emit('updateTodo', this.updatingTodo, this.selectedIndex)">Update</button>
   </div>
 </template>

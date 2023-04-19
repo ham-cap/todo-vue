@@ -11,21 +11,17 @@ export default {
   },
   data() {
     return {
-      newTodo: "",
       todos: [],
       editing: false,
       selectedTodo: "",
       selectedIndex: "",
-      updatedTodo: "",
     };
   },
   methods: {
-    addTodo: function (event) {
-      this.newTodo = event;
-      if (this.newTodo === "") return;
-      this.todos.push(this.newTodo);
+    addTodo: function (newTodo) {
+      if (newTodo === "") return;
+      this.todos.push(newTodo);
       localStorage.setItem("todoList", JSON.stringify(this.todos));
-      this.newTodo = "";
       this.$refs.createForm.clearInput();
     },
     deleteTodo: function (index) {
@@ -39,16 +35,14 @@ export default {
       this.selectedTodo = currentTodos[index];
       this.selectedIndex = index;
     },
-    updateTodo: function (event, index) {
-      this.updatedTodo = event;
-      if (this.updatedTodo === "") return;
-      this.todos.splice(index, 1, this.updatedTodo);
+    updateTodo: function (updatedTodo, index) {
+      if (updatedTodo === "") return;
+      this.todos.splice(index, 1, updatedTodo);
       localStorage.setItem("todoList", JSON.stringify(this.todos));
       this.$refs.editForm.clearChangedTodo();
       this.editing = false;
       this.selectedTodo = "";
       this.selectedIndex = "";
-      this.updatedTodo = "";
     }
   },
   mounted() {
