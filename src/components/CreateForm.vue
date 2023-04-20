@@ -1,16 +1,16 @@
 <script>
 export default {
-  data() {
+  data () {
     return {
-      input: "",
-    };
+      input: ''
+    }
   },
   methods: {
-    clearInput: function() {
-      this.input = "";
+    clearInput: function () {
+      this.input = ''
     }
   }
-};
+}
 </script>
 
 <template>

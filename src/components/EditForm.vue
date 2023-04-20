@@ -1,20 +1,20 @@
 <script>
 export default {
-  data() {
+  data () {
     return {
-      updatingTodo: this.selectedTodo,
-    };
+      updatingTodo: this.selectedTodo
+    }
   },
   methods: {
-    clearChangedTodo: function() {
-      this.changedTodo = "";
+    clearChangedTodo: function () {
+      this.changedTodo = ''
     }
   },
   props: {
     selectedTodo: String,
     selectedIndex: Number
   }
-};
+}
 </script>
 
 <template>

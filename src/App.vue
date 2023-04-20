@@ -25,12 +25,12 @@ export default {
       this.$refs.createForm.clearInput();
     },
     deleteTodo: function (index) {
-      this.todos.splice(index, 1)
+      this.todos.splice(index, 1);
       localStorage.setItem("todoList", JSON.stringify(this.todos));
     },
     editTodo: function (index) {
       this.editing = true;
-      const currentTodosJson = localStorage.getItem('todoList');
+      const currentTodosJson = localStorage.getItem("todoList");
       const currentTodos = JSON.parse(currentTodosJson);
       this.selectedTodo = currentTodos[index];
       this.selectedIndex = index;
@@ -43,7 +43,7 @@ export default {
       this.editing = false;
       this.selectedTodo = "";
       this.selectedIndex = "";
-    }
+    },
   },
   mounted() {
     if (Object.prototype.hasOwnProperty.call(localStorage, "todoList")) {
@@ -59,8 +59,22 @@ export default {
 <template>
   <div>
     <h1>ToDoApp</h1>
-    <CreateForm ref="createForm" v-on:addTodo="addTodo" v-if="this.editing === false" />
-    <EditForm ref="editForm" v-on:updateTodo="updateTodo" v-bind:selectedTodo="selectedTodo" v-bind:selectedIndex="selectedIndex" v-else />
-    <TodoList v-on:deleteTodo="deleteTodo" v-on:editTodo="editTodo" v-bind:todos="this.todos" />
+    <CreateForm
+      ref="createForm"
+      v-on:addTodo="addTodo"
+      v-if="this.editing === false"
+    />
+    <EditForm
+      ref="editForm"
+      v-on:updateTodo="updateTodo"
+      v-bind:selectedTodo="selectedTodo"
+      v-bind:selectedIndex="selectedIndex"
+      v-else
+    />
+    <TodoList
+      v-on:deleteTodo="deleteTodo"
+      v-on:editTodo="editTodo"
+      v-bind:todos="this.todos"
+    />
   </div>
 </template>
